@@ -5,9 +5,12 @@ app = Flask(__name__)
 
 @app.route("/", methods=['POST'])
 def webhook():
-    formatedObj = FormatCode(request.json["src"], style_config='pep8')
-    response = dict(formated=formatedObj[0], status=formatedObj[1])
-    return jsonify(response)
+    print(request.form)
+    print(request.files)
+#    formatedObj = FormatCode(request.json["src"], style_config='pep8')
+#    response = dict(formated=formatedObj[0], status=formatedObj[1])
+#    return jsonify(response)
+    return ""
 
 
 if __name__ == "__main__":
