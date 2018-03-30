@@ -9,10 +9,9 @@ def webhook():
     option = json.loads(request.form.get('option'))
     f = request.files.get('source')
     source = f.read().decode('utf-8')
-    formatedObj = FormatCode(source, style_config=option)
+    formatedObj = FormatCode(source, style_config=option['style'])
     response = dict(formated=formatedObj[0], status=formatedObj[1])
     return jsonify(response)
-    return ""
 
 
 if __name__ == "__main__":

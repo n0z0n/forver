@@ -4,11 +4,12 @@ import json
 
 
 def main(host, inputSource):
-    with open(inputSource, 'r') as f:
-        source = f.read()
-    payload = json.dumps({"src": source})
-    headers = {'Content-Type': "application/json", 'Cache-Control': "no-cache"}
-    response = requests.post(host, data=payload, headers=headers)
+    url = 'http://localhost:5000/'
+    files = {
+        'source': (inputSource, open(inputSource, 'rb'), 'text/plain'),
+    }
+    data = {"option": json.dumps({'style': 'google'})}
+    response = requests.post(url, files=files, data=data)
     with open(inputSource, 'w') as f:
         f.write(response.json()["formated"])
         f.flush()
@@ -16,7 +17,9 @@ def main(host, inputSource):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='')
-    parser.add_argument('host', action='store', nargs=None, type=str, help='forver host')
-    parser.add_argument('input', action='store', nargs=None, type=str, help='input sourcefile')
+    parser.add_argument(
+        'host', action='store', nargs=None, type=str, help='forver host')
+    parser.add_argument(
+        'input', action='store', nargs=None, type=str, help='input sourcefile')
     args = parser.parse_args()
     main(args.host, args.input)
