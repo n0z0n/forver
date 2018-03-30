@@ -1,6 +1,6 @@
 #!/bin/bash
-curl -i -X POST \
+curl -X POST \
 http://localhost:5000/ \
 -H "Content-Type: multipart/form-data" \
--F "metadata={\"edipi\":123456789}; type=application/json" \
--F "file=@./client.py; type=plain/text"
+-F "option={\"style\":\"google\"}; type=application/json" \
+-F "source=@./client.py; type=text/plain"

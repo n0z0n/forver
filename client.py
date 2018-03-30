@@ -16,9 +16,7 @@ def main(host, inputSource):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='')
-    parser.add_argument(
-        'host', action='store', nargs=None, type=str, help='forver host')
-    parser.add_argument(
-        'input', action='store', nargs=None, type=str, help='input sourcefile')
+    parser.add_argument('host', action='store', nargs=None, type=str, help='forver host')
+    parser.add_argument('input', action='store', nargs=None, type=str, help='input sourcefile')
     args = parser.parse_args()
     main(args.host, args.input)
